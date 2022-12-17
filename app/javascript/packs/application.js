@@ -10,6 +10,7 @@ import "channels"
 
 import "bootstrap"
 import "../stylesheets/application"
+import "../../assets/stylesheets/application"
 
 Rails.start()
 Turbolinks.start()
