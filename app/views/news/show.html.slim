@@ -1,0 +1,25 @@
+p#notice = notice
+
+p
+  strong Title:
+  = @news.title
+
+p
+  strong Link:
+  = @news.link
+
+p
+  strong Author:
+  = @news.author
+
+p
+  strong Description:
+  = @news.description
+
+p
+  strong Pubdate:
+  = @news.pubDate
+
+=> link_to "Edit", edit_news_path(@news)
+'|
+=< link_to "Back", news_index_path

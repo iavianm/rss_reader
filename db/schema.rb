@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_12_17_105838) do
+ActiveRecord::Schema.define(version: 2022_12_17_114000) do
 
   create_table "channels", force: :cascade do |t|
     t.string "title"
@@ -21,4 +21,19 @@ ActiveRecord::Schema.define(version: 2022_12_17_105838) do
     t.index ["url"], name: "index_channels_on_url", unique: true
   end
 
+  create_table "news", force: :cascade do |t|
+    t.string "title"
+    t.string "link"
+    t.string "author"
+    t.string "description"
+    t.date "pubdate"
+    t.integer "channel_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["channel_id"], name: "index_news_on_channel_id"
+    t.index ["pubdate"], name: "index_news_on_pubDate", unique: true
+    t.index ["title"], name: "index_news_on_title"
+  end
+
+  add_foreign_key "news", "channels"
 end
