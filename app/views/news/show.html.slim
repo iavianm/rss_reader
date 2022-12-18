@@ -14,11 +14,11 @@ p
 
 p
   strong Description:
-  = @news.description
+  = @news.description.html_safe
 
 p
   strong Pubdate:
-  = @news.pubDate
+  = @news.pubdate
 
 => link_to "Edit", edit_news_path(@news)
 '|

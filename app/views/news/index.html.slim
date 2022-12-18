@@ -2,8 +2,11 @@ h1 Listing news
 
 - @news.each do |news|
   .card
-    h5.card-header
-      = news[:title]
+    .card-title-style
+      = link_to news_path(news) do 
+        h5.card-header
+          =news[:title]
+
     .card-body
       p.card-title
         = news[:description].html_safe
@@ -13,6 +16,6 @@ br
 .digg_pagination
   = will_paginate @news, :container => false
 
-         / td = link_to "Show", news
+        
           / td = link_to "Edit", edit_news_path(news)
           / td = link_to "Destroy", news, data: {confirm: "Are you sure?"}, method: :delete
