@@ -4,8 +4,7 @@ class NewsController < ApplicationController
 
   # GET /news or /news.json
   def index
-    @channels = Channel.all
-    get_news(@channels)
+    get_news
     @news = News.all
   end
 
