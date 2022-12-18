@@ -5,19 +5,13 @@ h1 Listing news
     h5.card-header
       = news[:title]
     .card-body
-      h5.card-title
-        = news[:link]
-      p.card-text
-        = news[:description]
-        = news[:pubdate]
-        = news[:author]
-      a.btn.btn-primary[href="#"]
-        | Go somewhere
- 
+      p.card-title
+        = news[:description].html_safe
 
 br
 
-= link_to "New News", new_news_path
+.digg_pagination
+  = will_paginate @news, :container => false
 
          / td = link_to "Show", news
           / td = link_to "Edit", edit_news_path(news)

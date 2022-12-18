@@ -7,7 +7,8 @@ class NewsGetter
 
   begin
     def call
-      response ||= Nokogiri::XML(URI.open(url)).css('item')
+      response = response(url)
+
       if check_last_news(channel_id).nil?
         response.each do |item|
           News.create(
@@ -21,7 +22,7 @@ class NewsGetter
         end
       else
         response.each do |item|
-          if check_last_news(channel_id) < item.css('pubDate').children.text.to_datetime.to_i
+          if check_last_news(channel_id).pubdate < item.css('pubDate').children.text.to_datetime.to_i
             News.create(
               title: item.css('title').children.text,
               link: item.css('link').children.text,
@@ -53,6 +54,10 @@ class NewsGetter
   def check_last_news(channel_id)
     channel = Channel.find(channel_id)
     channel_news = channel.news
-    !channel_news.empty? ? channel_news.last.pubdate : nil
+    !channel_news.empty? ? channel_news.last : nil
+  end
+
+  def response(url)
+    Nokogiri::XML(URI.open(url)).css('item')
   end
 end
