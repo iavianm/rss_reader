@@ -1,1 +1,1 @@
-json.array! @channels, partial: "channels/channel", as: :channel
+json.array!(@channels, partial: 'channels/channel', as: :channel)

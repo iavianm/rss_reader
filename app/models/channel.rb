@@ -1,3 +1,3 @@
 class Channel < ApplicationRecord
-  has_many :news
+  has_many :news, dependent: :destroy
 end

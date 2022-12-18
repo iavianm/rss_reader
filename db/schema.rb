@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 2022_12_17_114000) do
     t.string "link"
     t.string "author"
     t.string "description"
-    t.datetime "pubdate"
+    t.integer "pubdate"
     t.bigint "channel_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
