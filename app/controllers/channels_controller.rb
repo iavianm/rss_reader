@@ -6,9 +6,6 @@ class ChannelsController < ApplicationController
     @channels = Channel.all
   end
 
-  # GET /channels/1 or /channels/1.json
-  def show; end
-
   # GET /channels/new
   def new
     @channel = Channel.new
@@ -23,7 +20,7 @@ class ChannelsController < ApplicationController
 
     respond_to do |format|
       if @channel.save
-        format.html { redirect_to(channel_url(@channel), notice: 'Channel was successfully created.') }
+        format.html { redirect_to(channels_url, notice: 'Channel was successfully created.') }
         format.json { render(:show, status: :created, location: @channel) }
       else
         format.html { render(:new, status: :unprocessable_entity) }

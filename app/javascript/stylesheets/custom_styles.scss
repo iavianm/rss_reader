@@ -1,6 +1,6 @@
 .logo {
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
 }
 
 .button_fonts {
@@ -10,6 +10,9 @@
 .digg_pagination {
   background: white;
   cursor: default;
+display: flex;
+justify-content: flex-end
+
   /* self-clearing method: */ }
   .digg_pagination a, .digg_pagination span, .digg_pagination em {
     padding: 0.2em 0.5em;
@@ -77,4 +80,77 @@
 
 .card :hover {
   --bs-card-cap-bg: #ccc;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.data {
+  font-size: 14px;
+  font-weight: normal;
+  background-color: #fff;
+}
+
+.btn-icon-sm {
+  width: 30px;
+  height: 30px;
+  padding: 5px;
+  box-sizing: border-box;
+}
+
+.btn-style-edit {
+  width: 30px;
+  height: 30px;
+}
+
+.btn-style-delete {
+  width: 30px;
+  height: 30px;
+}
+
+.btn-style-edit :hover {
+  background-color: orange;
+  border-radius: 50%;
+}
+
+.btn-style-delete :hover {
+  background-color: red;
+  border-radius: 50%;
+}
+
+.table-btn {
+  display: flex;
+  justify-content: flex-end
+}
+
+.news-container {
+  display: flex;
+}
+
+.sidebar {
+  max-width: 200px;
+  width: 100%;
+}
+
+.title-pozition {
+  text-align: center;
+}
+
+.channel {
+  display: flex;
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  a {
+    text-decoration: none;
+    color: #000;
+  }
+  img {
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+  }
 }

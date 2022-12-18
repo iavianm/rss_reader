@@ -3,11 +3,15 @@ class NewsController < ApplicationController
   before_action :set_news, only: [:show]
 
   def index
+    @channels = Channel.all
     get_news
-    @news = News.paginate(page: params[:page], per_page: 20)
+    @news = News.paginate(page: params[:page], per_page: 20).order(pubdate: :desc)
   end
 
-  def show; end
+  def show
+    @news.looked = true
+    @news.save
+  end
 
   private
 
