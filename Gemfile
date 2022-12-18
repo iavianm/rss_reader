@@ -15,6 +15,8 @@ gem 'jbuilder', '~> 2.7'
 gem 'slim-rails', '~> 3.5', '>= 3.5.1'
 gem 'nokogiri', '~> 1.13', '>= 1.13.10'
 gem 'open-uri', '~> 0.3.0'
+
+gem 'will_paginate', '~> 3.3'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
