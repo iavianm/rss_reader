@@ -15,9 +15,9 @@ table
     - @channels.each do |channel|
       tr
         td = channel.title
-        td = channel.string
+
         td = channel.url
-        td = channel.string
+
         td = link_to "Show", channel
         td = link_to "Edit", edit_channel_path(channel)
         td = link_to "Destroy", channel, data: {confirm: "Are you sure?"}, method: :delete

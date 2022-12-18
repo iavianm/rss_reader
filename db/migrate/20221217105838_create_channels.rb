@@ -7,7 +7,7 @@ class CreateChannels < ActiveRecord::Migration[6.1]
       t.timestamps
     end
 
-    add_index :channels, :title,                unique: true
+    add_index :channels, :title
     add_index :channels, :url,                  unique: true
   end
 end

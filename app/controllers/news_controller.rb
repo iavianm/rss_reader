@@ -1,8 +1,11 @@
 class NewsController < ApplicationController
+  include NewsHelper
   before_action :set_news, only: %i[ show edit update destroy ]
 
   # GET /news or /news.json
   def index
+    @channels = Channel.all
+    get_news(@channels)
     @news = News.all
   end
 
