@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_12_17_114000) do
+ActiveRecord::Schema.define(version: 2022_12_17_214906) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 2022_12_17_114000) do
     t.bigint "channel_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "image_url"
     t.index ["channel_id"], name: "index_news_on_channel_id"
     t.index ["pubdate"], name: "index_news_on_pubdate"
     t.index ["title"], name: "index_news_on_title"
