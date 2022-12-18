@@ -1,0 +1,24 @@
+h1 Listing news
+
+- @news.each do |news|
+  .card
+    h5.card-header
+      = news[:title]
+    .card-body
+      h5.card-title
+        = news[:link]
+      p.card-text
+        = news[:description]
+        = news[:pubdate]
+        = news[:author]
+      a.btn.btn-primary[href="#"]
+        | Go somewhere
+ 
+
+br
+
+= link_to "New News", new_news_path
+
+         / td = link_to "Show", news
+          / td = link_to "Edit", edit_news_path(news)
+          / td = link_to "Destroy", news, data: {confirm: "Are you sure?"}, method: :delete
