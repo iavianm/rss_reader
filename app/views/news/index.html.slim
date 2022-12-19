@@ -1,24 +1,39 @@
-h1 Listing news
+h1.title-pozition RSS news
 
-- @news.each do |news|
-  .card
-    h5.card-header
-      = news[:title]
-    .card-body
-      h5.card-title
-        = news[:link]
-      p.card-text
-        = news[:description]
-        = news[:pubdate]
-        = news[:author]
-      a.btn.btn-primary[href="#"]
-        | Go somewhere
- 
+.notice
+  div
+    = link_to "Add Channel", new_channel_path, class: 'btn btn-success btn-sm'
+  .message
+    - if !@channels.empty? && @news.empty?
+      | Check channels URL !!!
+
+hr
+
+.news-container
+  .sidebar
+    - @channels.each do |channel|
+      .channel
+        = image_tag('rss.svg')    
+        = link_to channel.title, channels_path
+  .news
+    - @news.each do |news|
+      .card
+        .card-title-style
+          = link_to news_path(news) do
+            - if news.looked 
+              p.card-header
+                =news[:title]
+            - else
+              h5.card-header
+                =news[:title]
+            .card-header.data
+              = Time.at(news[:pubdate]).strftime("%Y-%m-%d %H:%M:%S")
+
+        / .card-body
+        /   p.card-title
+        /     = news[:description].html_safe
 
 br
 
-= link_to "New News", new_news_path
-
-         / td = link_to "Show", news
-          / td = link_to "Edit", edit_news_path(news)
-          / td = link_to "Destroy", news, data: {confirm: "Are you sure?"}, method: :delete
+.digg_pagination
+  = will_paginate @news, :container => false

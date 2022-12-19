@@ -1,0 +1,22 @@
+doctype html
+html
+  head
+    title
+      | RSSReader
+    meta[name="viewport" content="width=device-width,initial-scale=1"]
+    = csrf_meta_tags
+    = csp_meta_tag
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+    = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+  body
+    .container
+      nav.navbar.navbar-expand-lg.navbar-light.bg-light.navbar-margin
+        .container-fluid
+          button.navbar-toggler[type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation"]
+            span.navbar-toggler-icon
+          #navbarNavAltMarkup.collapse.navbar-collapse
+            .navbar-nav
+              = link_to image_tag("rss.svg"), root_path, class: 'logo'
+              = link_to 'News', news_index_path, class: "nav-link active"
+              = link_to 'Channels', channels_path, class: "nav-link"
+      = yield

@@ -1,27 +1,26 @@
-h1 Listing channels
+h1.title-pozition RSS channels
 
-table
+= link_to "Add Channel", new_channel_path, class: 'btn btn-success btn-sm'
+
+table.table
   thead
     tr
-      th Title
-      th String
-      th Url
-      th String
-      th
-      th
-      th
-
+      th[scope="col"]
+        |
+      th[scope="col"]
+        |
+      th[scope="col"]
+        | 
+      th[scope="col"]
+        |
   tbody
-    - @channels.each do |channel|
+    - @channels.each_with_index do |channel, index|
       tr
+        td[scope="row"] = index + 1
         td = channel.title
+        td = link_to channel.url, channel.url, target: "_blank"
+        td[class="table-btn"]   
+          = link_to image_tag('edit.svg', class: 'btn-icon-sm'), edit_channel_path(channel), class: 'btn-style-edit', title: 'Edit'
+          = link_to image_tag('trash-2.svg', class: 'btn-icon-sm'), channel, title: 'Delete', class: 'btn-style-delete', method: :delete, data: {confirm: "Are you sure?"} 
+      tr
 
-        td = channel.url
-
-        td = link_to "Show", channel
-        td = link_to "Edit", edit_channel_path(channel)
-        td = link_to "Destroy", channel, data: {confirm: "Are you sure?"}, method: :delete
-
-br
-
-= link_to "New Channel", new_channel_path

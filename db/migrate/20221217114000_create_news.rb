@@ -5,7 +5,7 @@ class CreateNews < ActiveRecord::Migration[6.1]
       t.string :link
       t.string :author
       t.string :description
-      t.datetime   :pubdate
+      t.integer :pubdate
 
       t.references :channel, null: false, foreign_key: true
 

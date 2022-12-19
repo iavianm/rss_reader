@@ -15,3 +15,21 @@
     = f.text_field :url
 
   .actions = f.submit
+
+  form
+    .mb-3
+      label.form-label[for="exampleInputEmail1"]
+        | Title
+      input#exampleInputEmail1.form-control[type="email" aria-describedby="emailHelp"]
+      #emailHelp.form-text
+        | We'll never share your email with anyone else.
+    .mb-3
+      label.form-label[for="exampleInputPassword1"]
+        | URL
+      input#exampleInputPassword1.form-control[type="password"]
+    .mb-3.form-check
+      input#exampleCheck1.form-check-input[type="checkbox"]
+      label.form-check-label[for="exampleCheck1"]
+        | Check me out
+    button.btn.btn-primary[type="submit"]
+      | Submit
