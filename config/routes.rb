@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
   root 'news#index'
-  resources :news
-  resources :channels
+  resources :news, only: [:index, :show]
+  resources :channels, expect: :show
 end

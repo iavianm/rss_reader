@@ -1,0 +1,11 @@
+= provide :main_menu
+  nav.navbar.navbar-expand-lg.navbar-light.bg-light.navbar-margin
+    .container-fluid
+      div data-controller="toggle"
+      button.navbar-toggler[type="button" data-toggle="collapse" data-toggle-target="navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation"]
+        span.navbar-toggler-icon
+      #navbarNavAltMarkup.collapse.navbar-collapse
+        .navbar-nav
+          = link_to image_tag("rss.svg"), root_path, class: 'logo'
+          = nav_tab 'News', news_index_path, class: "nav-link", current_page: current_page
+          = nav_tab 'Channels', channels_path, class: "nav-link", current_page: current_page
