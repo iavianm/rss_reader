@@ -12,11 +12,12 @@ html
     .container
       nav.navbar.navbar-expand-lg.navbar-light.bg-light.navbar-margin
         .container-fluid
-          button.navbar-toggler[type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation"]
+         div data-controller="toggle"
+          button.navbar-toggler[type="button" data-toggle="collapse" data-toggle-target="navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation"]
             span.navbar-toggler-icon
           #navbarNavAltMarkup.collapse.navbar-collapse
             .navbar-nav
               = link_to image_tag("rss.svg"), root_path, class: 'logo'
-              = link_to 'News', news_index_path, class: "nav-link active"
-              = link_to 'Channels', channels_path, class: "nav-link"
+              = link_to 'News', news_index_path, class: "nav-link news-button button-active"
+              = link_to 'Channels', channels_path, class: "nav-link channel-button button-active"
       = yield
