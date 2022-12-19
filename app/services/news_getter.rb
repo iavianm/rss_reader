@@ -13,36 +13,22 @@ class NewsGetter
 
       if last_news_date.nil?
         response.each do |item|
-          News.create(
-            title: item.css('title').children.text,
-            link: item.css('link').children.text,
-            description: item.css('description').children.text,
-            image_url: item.css('enclosure').first.nil? ? nil : item.css('enclosure').first.attributes['url'].value,
-            author: item.css('author').children.text,
-            pubdate: item.css('pubDate').children.text.to_datetime.to_i,
-            channel_id: channel_id,
-          )
+          create_news(item)
         end
       else
         response.each do |item|
           if last_news_date.pubdate < item.css('pubDate').children.text.to_datetime.to_i
-            News.create(
-              title: item.css('title').children.text,
-              link: item.css('link').children.text,
-              description: item.css('description').children.text,
-              image_url: item.css('enclosure').first.nil? ? nil : item.css('enclosure').first.attributes['url'].value,
-              author: item.css('author').children.text,
-              pubdate: item.css('pubDate').children.text.to_datetime.to_i,
-              channel_id: channel_id,
-            )
+            create_news(item)
           end
         end
-        News.last.delete
+        # News.last.delete
       end
     end
   rescue TypeError => e
     e.class
   rescue SocketError => e
+    e.class
+  rescue Errno::ENOENT => e
     e.class
   end
 
@@ -63,5 +49,20 @@ class NewsGetter
 
   def response(url)
     Nokogiri::XML(URI.open(url)).css('item')
+  rescue Exception
+    []
+  end
+
+  def create_news(item)
+    news = News.new(
+      title: item.css('title').text,
+      link: item.css('link').text,
+      description: item.css('description').text,
+      image_url: item.css('enclosure').first.nil? ? nil : item.css('enclosure').first.attributes['url'].value,
+      author: item.css('author').text,
+      pubdate: item.css('pubDate').text.to_datetime.to_i,
+      channel_id: channel_id,
+    )
+    news.save
   end
 end

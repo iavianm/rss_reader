@@ -1,5 +1,14 @@
 h1.title-pozition RSS news
 
+.notice
+  div
+    = link_to "Add Channel", new_channel_path, class: 'btn btn-success btn-sm'
+  .message
+    - if !@channels.empty? && @news.empty?
+      | Check channels URL !!!
+
+hr
+
 .news-container
   .sidebar
     - @channels.each do |channel|

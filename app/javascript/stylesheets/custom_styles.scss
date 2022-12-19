@@ -1,6 +1,7 @@
 .logo {
   width: 40px;
   height: 40px;
+  margin-right: 10px;
 }
 
 .button_fonts {
@@ -130,9 +131,17 @@ justify-content: flex-end
   display: flex;
 }
 
-.sidebar {
-  max-width: 200px;
+.news {
   width: 100%;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  max-width: 150px;
+  width: 100%;
+  margin-top: 10px;
+  gap: 20px;
 }
 
 .title-pozition {
@@ -141,7 +150,6 @@ justify-content: flex-end
 
 .channel {
   display: flex;
-  margin-top: 10px;
   font-size: 16px;
   font-weight: 600;
   a {
@@ -153,4 +161,26 @@ justify-content: flex-end
     height: 25px;
     margin-right: 10px;
   }
+}
+
+.navbar-margin {
+  margin-bottom: 20px;
+}
+
+.one_news_container {
+  img {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+  }
+}
+
+.notice {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.message {
+  text-align: center;
+  color: red;
 }

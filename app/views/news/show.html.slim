@@ -1,29 +1,19 @@
-p#notice = notice
+.one_news_container
+  h3
+    = @news.title
 
-p
-  strong Title:
-  = @news.title
+  p
+    = @news.description.html_safe
 
-p
-  strong Link:
-  = @news.link
+  p
+    img src== @news.image_url
 
-p
-  strong Author:
-  = @news.author
+  p
+    = @news.author 
+    |  | 
+    = Time.at(@news.pubdate).strftime("%Y-%m-%d %H:%M:%S")
+  
 
-p
-  strong Description:
-  = @news.description.html_safe
-
-p
-  strong Pubdate:
-  = @news.pubdate
-
-p
-  strong image:
-  img src== @news.image_url
-
-=> link_to "Edit", edit_news_path(@news)
-'|
-=< link_to "Back", news_index_path
+  = link_to "Back", news_index_path, class: "btn btn-secondary"
+  |  |  
+  = link_to "Original news", @news.link, class: "btn btn-success"
