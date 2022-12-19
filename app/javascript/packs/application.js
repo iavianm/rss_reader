@@ -15,3 +15,5 @@ import "../stylesheets/custom_styles.scss"
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+import "controllers"

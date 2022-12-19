@@ -4,8 +4,18 @@
   margin-right: 10px;
 }
 
+@media screen and (max-width: 990px) {
+  .logo {
+    display: none;
+  }
+}
+
 .button_fonts {
   color: #fff;
+}
+
+.button-active {
+  color: #000;
 }
 
 .digg_pagination {
