@@ -30,6 +30,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 group :development, :test do
   gem 'rspec-rails'
   gem 'factory_bot_rails', '~> 6.2'
+  gem 'shoulda-matchers'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
 

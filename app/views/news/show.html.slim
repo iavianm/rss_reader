@@ -17,6 +17,6 @@
     = Time.at(@news.pubdate).strftime("%Y-%m-%d %H:%M:%S")
   
 
-  = link_to "Back", news_index_path, class: "btn btn-secondary"
+  = link_to "Back", news_index_path, class: "btn btn-secondary btn-sm"
   |  |  
-  = link_to "Original news", @news.link, class: "btn btn-success"
+  = link_to "Original news", @news.link, class: "btn btn-success btn-sm", target: "_blank"
