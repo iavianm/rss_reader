@@ -10,5 +10,6 @@ html
     = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
   body
     .container
-      = yield :main_menu
+      div data-controller="toggle"
+        = yield :main_menu
       = yield
