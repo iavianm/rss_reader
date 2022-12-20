@@ -17,7 +17,7 @@ hr
     - @channels.each do |channel|
       .channel
         = image_tag('rss.svg')    
-        = link_to channel.title, channels_path
+        = channel.title
   .news
     - @news.each do |news|
       .card
@@ -25,16 +25,15 @@ hr
           = link_to news_path(news) do
             - if news.looked 
               p.card-header
-                =news[:title]
+                = news[:title]
             - else
               h5.card-header
-                =news[:title]
+                = news[:title]
             .card-header.data
-              = Time.at(news[:pubdate]).strftime("%Y-%m-%d %H:%M:%S")
-
-        / .card-body
-        /   p.card-title
-        /     = news[:description].html_safe
+              div 
+                = news.channel.title
+              div  
+                = Time.at(news[:pubdate]).strftime("%Y-%m-%d %H:%M:%S")
 
 br
 
