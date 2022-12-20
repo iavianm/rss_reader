@@ -22,7 +22,7 @@ class ChannelsController < ApplicationController
 
   def update
     if @channel.update(channel_params)
-      redirect_to(channel_url(@channel), notice: 'Channel was successfully updated.')
+      redirect_to(channels_url, notice: 'Channel was successfully updated.')
     else
       render(:edit, status: :unprocessable_entity)
     end
@@ -40,6 +40,6 @@ class ChannelsController < ApplicationController
   end
 
   def channel_params
-    params.require(:channel).permit(:title, :string, :url, :string)
+    params.require(:channel).permit(:title, :url)
   end
 end

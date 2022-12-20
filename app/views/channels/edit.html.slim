@@ -1,10 +1,6 @@
 = provide :page_title, "Edit channel"
 = currently_at 'Channels'
 
-h1 Editing channel
+h1.title-pozition Editing channel
 
-== render "form"
-
-=> link_to "Show", @channel
-'|
-=< link_to "Back", channels_path
+== render "form_update"
