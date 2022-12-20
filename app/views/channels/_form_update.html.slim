@@ -1,9 +1,9 @@
 = form_for @channel do |f|
   .mb-3
-    = f.text_field :title, class: "form-control", placeholder: 'Enter the channel name'
+    = f.text_field :title, class: "form-control form-title", placeholder: 'Enter the channel name'
 
   .mb-3
-    = f.text_field :url, class: "form-control", placeholder: 'Enter the channel URL'
+    = f.text_field :url, class: "form-control form-url", placeholder: 'Enter the channel URL'
 
   .actions 
     = link_to "Back", channels_path, class: "btn btn-sm btn-secondary"

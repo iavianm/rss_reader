@@ -16,7 +16,7 @@ RSpec.describe(NewsGetter) do
     incorrect_channel = Channel.create(url: 'http://www.fakenews', title: 'fakenews')
     NewsGetter.(url: incorrect_channel.url, id: incorrect_channel.id)
 
-    expect(News.all.length).to eq 0
+    expect(News.all.length).to(eq(0))
     expect(News.all).to(eq([]))
   end
 end
