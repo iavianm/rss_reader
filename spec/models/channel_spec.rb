@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe(Channel, type: :model) do
   it 'is valid with full params' do
     channel = Channel.create(
-      title: 'MyNews',
-      url: 'https://drive.ru',
+      title: 'Drive.ru',
+      url: 'http://feeds.feedburner.com/drivenet',
     )
 
     expect(channel).to(be_valid)
@@ -12,7 +12,7 @@ RSpec.describe(Channel, type: :model) do
 
   it 'is invalid without title' do
     channel = Channel.create(
-      url: 'https://drive.ru',
+      url: 'http://feeds.feedburner.com/drivenet',
     )
 
     expect(channel).not_to(be_valid)
@@ -21,7 +21,7 @@ RSpec.describe(Channel, type: :model) do
 
   it 'is invalid without url' do
     channel = Channel.create(
-      title: 'MyNews',
+      title: 'Drive.ru',
     )
 
     expect(channel).not_to(be_valid)
@@ -31,7 +31,7 @@ RSpec.describe(Channel, type: :model) do
   it 'is invalid with small title' do
     channel = Channel.create(
       title: 'My',
-      url: 'https://drive.ru',
+      url: 'http://feeds.feedburner.com/drivenet',
     )
 
     expect(channel).not_to(be_valid)
@@ -51,12 +51,12 @@ RSpec.describe(Channel, type: :model) do
   it 'is invalid with not uniq url' do
     Channel.create(
       title: 'First',
-      url: 'https://drive.ru',
+      url: 'http://feeds.feedburner.com/drivenet',
     )
 
     second_channel = Channel.create(
       title: 'Second',
-      url: 'https://drive.ru',
+      url: 'http://feeds.feedburner.com/drivenet',
     )
 
     expect(second_channel).not_to(be_valid)
