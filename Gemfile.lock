@@ -223,8 +223,6 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
-    sqlite3 (1.5.4-x86_64-darwin)
-    sqlite3 (1.5.4-x86_64-linux)
     stringio (3.0.4)
     temple (0.8.2)
     thor (1.2.1)
@@ -263,6 +261,7 @@ GEM
 
 PLATFORMS
   x86_64-darwin-20
+  x86_64-linux
   x86_64-linux-musl
 
 DEPENDENCIES
@@ -284,7 +283,6 @@ DEPENDENCIES
   shoulda-matchers
   slim-rails (~> 3.5, >= 3.5.1)
   spring
-  sqlite3 (~> 1.4)
   turbolinks (~> 5)
   web-console (>= 4.1.0)
   webdrivers
