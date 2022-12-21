@@ -1,33 +1,28 @@
 FROM ruby:3.0.2-alpine
 
-ARG RAILS_ROOT=/rss_reader
+# install dependencies for application
+RUN apk -U add --no-cache \
+  build-base \
+  git \
+  postgresql-dev \
+  postgresql-client \
+  libxml2-dev \
+  libxslt-dev \
+  nodejs \
+  yarn \
+  imagemagick \
+  tzdata \
+  less \
+  && rm -rf /var/cache/apk/*
 
-ARG PACKAGES="vim openssl-dev postgresql-dev build-base curl nodejs yarn less tzdata git postgresql-client bash screen gcompat"
+WORKDIR /app
+COPY . /app/
 
-RUN apk update \
+ENV BUNDLE_PATH /gems
+RUN yarn install
+RUN bundle install
 
-    && apk upgrade \
-
-    && apk add --update --no-cache $PACKAGES
-
-RUN gem install bundler:2.2.22
-
-RUN mkdir $RAILS_ROOT
-
-WORKDIR $RAILS_ROOT
-
-COPY Gemfile Gemfile.lock  ./
-
-RUN bundle install --jobs 5
-
-COPY package.json yarn.lock ./
-
-RUN yarn install --frozen-lockfile
-
-ADD . $RAILS_ROOT
-
-ENV PATH=$RAILS_ROOT/bin:${PATH}
+ENTRYPOINT [ "bin/rails"]
+CMD [ "s", "-b", "0.0.0.0" ]
 
 EXPOSE 3000
-
-CMD bundle exec rails s -b '0.0.0.0' -p 3000

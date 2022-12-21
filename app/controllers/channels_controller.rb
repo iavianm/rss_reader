@@ -1,4 +1,5 @@
 class ChannelsController < ApplicationController
+  include ChannelsHelper
   before_action :set_channel, only: [:edit, :update, :destroy]
 
   def index
@@ -12,7 +13,7 @@ class ChannelsController < ApplicationController
   def edit; end
 
   def create
-    @channel = Channel.new(channel_params)
+    @channel = Channel.new(check_params)
     if @channel.save
       redirect_to(channels_url, notice: 'Channel was successfully created.')
     else
@@ -21,7 +22,7 @@ class ChannelsController < ApplicationController
   end
 
   def update
-    if @channel.update(channel_params)
+    if @channel.update(check_params)
       redirect_to(channels_url, notice: 'Channel was successfully updated.')
     else
       render(:edit, status: :unprocessable_entity)
@@ -41,5 +42,11 @@ class ChannelsController < ApplicationController
 
   def channel_params
     params.require(:channel).permit(:title, :url)
+  end
+
+  def check_params(params = channel_params)
+    response = something_url(params['url'])
+    params['url'] = response
+    params
   end
 end

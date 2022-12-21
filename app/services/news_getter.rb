@@ -7,7 +7,7 @@ class NewsGetter
 
   begin
     def call
-      response ||= response(url)
+      response ||= ChannelsHelper.response(url)
 
       last_news_date ||= check_last_news(channel_id)
 
@@ -21,7 +21,6 @@ class NewsGetter
             create_news(item)
           end
         end
-        # News.last.delete
       end
     end
   rescue TypeError => e
@@ -45,12 +44,6 @@ class NewsGetter
     channel = Channel.find(channel_id)
     channel_news = channel.news
     !channel_news.empty? ? channel_news.order(pubdate: :desc).first : nil
-  end
-
-  def response(url)
-    Nokogiri::XML(URI.open(url)).css('item')
-  rescue Exception
-    []
   end
 
   def create_news(item)

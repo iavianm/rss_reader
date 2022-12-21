@@ -1,5 +1,3 @@
-# README
-
 # RSS News Reader Application
 
 * Ruby version 3.0.2
@@ -17,3 +15,7 @@
 6. docker-compose run --rm web bash -c "bundle install"
 7. docker-compose run --rm web bash -c "rails db:create db:migrate"
 8. docker-compose up
+
+***
+
+
