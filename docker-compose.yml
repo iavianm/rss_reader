@@ -1,37 +1,27 @@
-version: '3.7'
-
+version: '3.8'
 services:
-  web:
-    build: .
-    volumes: &web-volumes
-      - &app-volume .:/rss_reader:cached
-      - ~/.ssh:/root/.ssh
-      - ~/.bash_history:/root/.bash_history
-      - &bundle-cache-volume bundle_cache:/bundle_cache
-    ports:
-      - 3000:3000
-      - 3001:3001
-      - 3002:3002
-    depends_on:
-      - db
-    environment: &web-environment
-      BUNDLE_PATH: /bundle_cache
-      GEM_HOME: /bundle_cache
-      GEM_PATH: /bundle_cache
-      RAILS_PORT: 3000
-      RUBYOPT: -W:no-deprecated -W:no-experimental
-      DATABASE_HOST: db
-      DATABASE_USERNAME: postgres
-      DATABASE_PASSWORD: postgres
-    command: bundle exec rails s -b '0.0.0.0' -p 3000
-
   db:
-    image: postgres:13
+    image: postgres:latest
+    environment:
+      - POSTGRES_PASSWORD=password
+      - "POSTGRES_HOST_AUTH_METHOD=trust"
     ports:
       - 5432:5432
+    volumes:
+      - dbdata:/var/lib/postgresql/data
+
+  web:
+    build: .
+    command: bash -c "rm -f /app/tmp/pids/server.pid && rails s -b 0.0.0.0"
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
+      - DATABASE_URL=postgres://postgres:password@db:5432/postgres
+    volumes:
+      - .:/app
 
 volumes:
-  bundle_cache:
+  dbdata:
+  
