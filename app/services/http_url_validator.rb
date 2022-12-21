@@ -10,7 +10,7 @@ class HttpUrlValidator < ActiveModel::EachValidator
 
   def validate_each(record, attribute, value)
     if value.present? && self.class.compliant?(value)
-      xml = ChannelsHelper.response(value)
+      xml = ParseXml.response(value)
       if xml.length.zero?
         record.errors.add(attribute, 'There is no news on this channel')
       end
