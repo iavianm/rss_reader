@@ -7,7 +7,7 @@ class NewsGetter
 
   begin
     def call
-      response ||= ChannelsHelper.response(url)
+      response ||= ParseXml.response(url)
 
       last_news_date ||= check_last_news(channel_id)
 

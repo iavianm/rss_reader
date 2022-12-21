@@ -1,5 +1,4 @@
 class ChannelsController < ApplicationController
-  include ChannelsHelper
   before_action :set_channel, only: [:edit, :update, :destroy]
 
   def index
