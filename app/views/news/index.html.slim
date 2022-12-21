@@ -13,11 +13,12 @@ h1.title-pozition RSS news
 hr
 
 .news-container
-  .sidebar
-    - @channels.each do |channel|
-      .channel
-        = image_tag('rss.svg')    
-        = channel.title
+  div data-controller="sidebar"
+    .sidebar id="sidebar" data-sidebar-target="sidebarNav"
+      - @channels.each do |channel|
+        .channel
+          = image_tag('rss.svg')    
+          = channel.title
   .news
     - @news.each do |news|
       .card

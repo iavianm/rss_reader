@@ -68,18 +68,6 @@ justify-content: flex-end
   *:first-child + html .digg_pagination {
     overflow: hidden; }
 
-// .card-body img{
-//   display: none;
-//   width: 0;
-//   height: 0;
-// }
-
-// .card-body br{
-//   display: none;
-//   width: 0;
-//   height: 0;
-// }
-
 .card {
   margin-top: 10px;
   box-sizing: border-box;
@@ -152,9 +140,24 @@ justify-content: flex-end
   display: flex;
   flex-direction: column;
   max-width: 150px;
+  min-width: 120px;
   width: 100%;
   margin-top: 10px;
   gap: 20px;
+  visibility: visible;
+	opacity: 1;
+}
+
+@media screen and (max-width: 990px) {
+  .sidebar {
+    display: none;
+  }
+}
+
+.sidebar-hide {
+  transition: visibility 1s, opacity 1s linear;
+  visibility: hidden;
+  opacity: 0;
 }
 
 .title-pozition {

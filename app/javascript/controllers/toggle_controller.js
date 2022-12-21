@@ -5,8 +5,6 @@ export default class extends Controller {
 
   connect() {
 
-    console.log("navbarNavAltMarkup")
-
     this.navbarNavAltMarkupTarget.addEventListener('click', () => {
       document.getElementById('navbarNavAltMarkup').classList.toggle('show')
     })
