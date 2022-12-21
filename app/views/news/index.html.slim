@@ -1,0 +1,41 @@
+= provide :page_title, "News"
+= currently_at 'News'
+
+h1.title-pozition RSS news
+
+.notice
+  div
+    = link_to "Add Channel", new_channel_path, class: 'btn btn-success btn-sm'
+  .message
+    - if !@channels.empty? && @news.empty?
+      | Check channels URL !!!
+
+hr
+
+.news-container
+  .sidebar
+    - @channels.each do |channel|
+      .channel
+        = image_tag('rss.svg')    
+        = channel.title
+  .news
+    - @news.each do |news|
+      .card
+        .card-title-style
+          = link_to news_path(news) do
+            - if news.looked 
+              p.card-header
+                = news[:title]
+            - else
+              h5.card-header
+                = news[:title]
+            .card-header.data
+              div 
+                = news.channel.title
+              div  
+                = Time.at(news[:pubdate]).strftime("%Y-%m-%d %H:%M:%S")
+
+br
+
+.digg_pagination
+  = will_paginate @news, :container => false

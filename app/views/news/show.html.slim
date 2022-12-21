@@ -1,0 +1,22 @@
+= provide :page_title, "Show news"
+= currently_at 'News'
+
+.one_news_container
+  h3
+    = @news.title
+
+  p
+    = @news.description.html_safe
+
+  p
+    img src== @news.image_url
+
+  p
+    = @news.author 
+    |  | 
+    = Time.at(@news.pubdate).strftime("%Y-%m-%d %H:%M:%S")
+  
+
+  = link_to "Back", news_index_path, class: "btn btn-secondary btn-sm"
+  |  |  
+  = link_to "Original news", @news.link, class: "btn btn-success btn-sm", target: "_blank"

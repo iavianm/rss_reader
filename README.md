@@ -1,24 +1,17 @@
-# README
+# RSS News Reader
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+**The application allows you to subscribe and read news from RSS news channels**
 
-Things you may want to cover:
+* Ruby version 3.0.2
+* Rails version 6.1.7
+* PostgreSQL
+* Docker
+* * *
+* Start project
 
-* Ruby version
+1. docker-compose build
+2. docker-compose up
 
-* System dependencies
+***
 
-* Configuration
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
