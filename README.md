@@ -11,7 +11,3 @@
 
 1. docker-compose build
 2. docker-compose up
-
-* * *
-
-**[Link to the demo project](https://iavianm-rss-reader.herokuapp.com/)**
